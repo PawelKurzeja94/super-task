@@ -1,0 +1,36 @@
+<div class="buttons">
+  <button mat-raised-button color="primary" (click)="addNewType('One')">
+    Add new Type One
+  </button>
+  <button mat-raised-button color="primary" (click)="addNewType('Two')">
+    Add new Type Two
+  </button>
+  <button mat-raised-button color="primary" (click)="addNewType('Three')">
+    Add new Type Three
+  </button>
+</div>
+
+<form [formGroup]="form" cdkDropListGroup class="form">
+  <ng-container [formArrayName]="formArrayKey">
+    <div
+      *ngFor="let control of formTypesArray.controls; let i = index"
+      cdkDropList
+      [cdkDropListData]="getFormArrayByIndex(i).controls"
+      (cdkDropListDropped)="drop($event, i)"
+    >
+      <div
+        [formArrayName]="i"
+        *ngFor="
+          let innerControl of getFormArrayByIndex(i).controls;
+          let innerIndex = index
+        "
+      >
+        <app-card
+          [formControlName]="innerIndex"
+          [formType]="innerControl.value.type"
+          cdkDrag
+        ></app-card>
+      </div>
+    </div>
+  </ng-container>
+</form>

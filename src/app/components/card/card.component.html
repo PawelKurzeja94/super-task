@@ -1,0 +1,40 @@
+<ng-container *ngIf="form">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>{{ formType }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name" />
+        </mat-form-field>
+
+        <ng-container *ngIf="formType === 'One'">
+          <mat-form-field>
+            <mat-label>Inp1</mat-label>
+            <input matInput type="text" formControlName="inp1" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Inp2</mat-label>
+            <input matInput type="text" formControlName="inp2" />
+          </mat-form-field>
+        </ng-container>
+
+        <ng-container *ngIf="formType === 'Two'">
+          <mat-form-field>
+            <mat-label>Inp7</mat-label>
+            <input matInput type="text" formControlName="inp7" />
+          </mat-form-field>
+        </ng-container>
+
+        <ng-container *ngIf="formType === 'Three'">
+          <mat-form-field>
+            <mat-label>Inp3</mat-label>
+            <input matInput type="text" formControlName="inp3" />
+          </mat-form-field>
+        </ng-container>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
